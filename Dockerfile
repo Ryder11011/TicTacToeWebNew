@@ -1,8 +1,8 @@
 # ==========================================
 # Build Stage
 # ==========================================
-# Use a Maven image with Java 17 to build the project
-FROM maven:3.9-eclipse-temurin-17 AS build
+# Use a Maven image with Java 21 to build the project
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 
 # Copy your pom.xml and source code
@@ -16,7 +16,7 @@ RUN mvn clean package -DskipTests
 # Run Stage
 # ==========================================
 # Use a lighter JRE image to run the application
-FROM eclipse-temurin:17-jre-jammy
+FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 
 # Copy the built .jar file from the build stage
